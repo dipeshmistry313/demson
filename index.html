@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demson Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/recharts/umd/Recharts.min.js"></script>
+    <style>
+      /* Global Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideInUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+      .animate-slide-in-up { animation: slideInUp 0.5s ease-in-out; }
+
+      /* Fingerprint Scan Animation */
+      @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+      }
+      .animate-pulse-scan {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      /* Custom Light Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+      /* Custom Light Checkbox */
+      .custom-checkbox {
+        appearance: none;
+        background-color: #fff;
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 1.15em;
+        height: 1.15em;
+        border: 0.15em solid #cbd5e1;
+        border-radius: 0.25em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+      }
+      .custom-checkbox::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em #4f46e5;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+      .custom-checkbox:checked::before {
+        transform: scale(1);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#4f46e5',
+              'secondary': '#f1f5f9',
+              'accent': '#10b981',
+              'danger': '#ef4444',
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.1.2",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.8.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-secondary">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
